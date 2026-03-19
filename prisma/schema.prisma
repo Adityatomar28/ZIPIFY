@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Defining The Models
+model video{
+  id           String @id @default(cuid())
+  title        String
+  description  String?
+  // This public id given by cloudinary once we upload the video we get the response back
+  publicId     String
+  originalSize String
+  duration     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+}

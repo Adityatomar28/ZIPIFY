@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: zipify-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: zipify
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    container_name: zipify-adminer
+    restart: always
+    ports:
+      - "8080:8080"
