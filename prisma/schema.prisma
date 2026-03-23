@@ -19,8 +19,10 @@ model video{
   // This public id given by cloudinary once we upload the video we get the response back
   publicId     String
   originalSize String
-  duration     String
+  compressedSize String
+  duration     Int
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  
 
 }
