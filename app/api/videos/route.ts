@@ -1,21 +1,23 @@
-// using prisma client to having connection and we are fethcing some of data from the database
+// using prisma client to connect and fetch data from the database
 
-import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
 
-const prisma = new PrismaClient();
-
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const videos = await prisma.video.findMany({
-        orderBy:{createdAt:"desc"}
-    })
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return NextResponse.json(videos);
   } catch (error) {
-    return NextResponse.json({ error: "Something went wrong" },
-   {status:500})
-  }finally{
-    await prisma.$disconnect
+    console.error("Error fetching videos:", error);
+
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
   }
 }
