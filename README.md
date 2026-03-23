@@ -1,36 +1,199 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 Cloudinary Showcase — Video Upload & Management SaaS
 
-## Getting Started
+A full-stack web application that allows users to upload, manage, and optimize videos using **Cloudinary**, with authentication via **Clerk**, and a scalable backend powered by **Next.js**, **Prisma**, and **PostgreSQL (Docker)**.
 
-First, run the development server:
+This project demonstrates real-world SaaS architecture, including authentication, media processing, database integration, and API-driven workflows.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Features
+
+* 🔐 User authentication using **Clerk**
+* 📤 Video upload to **Cloudinary**
+* 📦 Store video metadata in **PostgreSQL**
+* ⚡ API routes built with **Next.js App Router**
+* 🐳 Database running in **Docker**
+* 📊 Fetch and display uploaded videos dynamically
+* 🎨 Responsive UI with **Tailwind CSS**
+* 🧩 Modular architecture with reusable components
+
+---
+
+## 🧱 Tech Stack
+
+**Frontend**
+
+* Next.js 16 (App Router)
+* React
+* Tailwind CSS
+
+**Backend**
+
+* Next.js API Routes
+* Prisma ORM
+* PostgreSQL
+
+**Infrastructure**
+
+* Docker
+* Cloudinary
+* Clerk Authentication
+
+---
+
+## 📂 Project Structure
+
+```
+zipify/
+│
+├── app/                # Next.js routes and pages
+│   ├── (app)/home
+│   ├── social-share
+│   ├── video-upload
+│   └── api/
+│
+├── components/         # Reusable UI components
+├── lib/                # Prisma client and utilities
+├── prisma/             # Database schema
+├── public/             # Static assets
+├── types/              # TypeScript types
+│
+├── docker-compose.yml  # PostgreSQL container
+├── package.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a file named:
 
-## Learn More
+```
+.env.local
+```
 
-To learn more about Next.js, take a look at the following resources:
+Add the following:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/zipify
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key
+CLERK_SECRET_KEY=your_secret
 
-## Deploy on Vercel
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🐳 Running PostgreSQL with Docker
+
+Start the database:
+
+```
+docker compose up -d
+```
+
+Verify containers:
+
+```
+docker ps
+```
+
+---
+
+## 🛠️ Setup Instructions
+
+Install dependencies:
+
+```
+npm install
+```
+
+Generate Prisma client:
+
+```
+npx prisma generate
+```
+
+Sync database schema:
+
+```
+npx prisma db push
+```
+
+Start development server:
+
+```
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 📡 API Endpoints
+
+### Get all videos
+
+```
+GET /api/videos
+```
+
+Returns:
+
+```
+[
+  {
+    id,
+    title,
+    publicId,
+    duration,
+    createdAt
+  }
+]
+```
+
+---
+
+## 📌 What This Project Demonstrates
+
+* Full-stack application architecture
+* REST API design
+* Database integration with ORM
+* Authentication and authorization
+* Media storage and processing
+* Dockerized services
+* Production-ready project structure
+
+---
+
+## 🧪 Future Improvements
+
+* Video compression and optimization
+* Pagination and search
+* Video analytics dashboard
+* Background job processing
+* File size comparison metrics
+* Deployment to AWS / Vercel
+
+---
+
+## 👨‍💻 Author
+
+**Aditya Tomar**
+
+GitHub:
+https://github.com/Adityatomar28
+
+---
+
+## ⭐ If you found this project useful
+
+Give it a star on GitHub!
